@@ -20,6 +20,7 @@ You have to install and configure an [MySQL](https://www.mysql.com/) or [MariDB]
 
 ### Installing
 Navigate to the source directory and run:
+
 `pip install .`
 
 You also have to copy the [DB schema](https://github.com/japalie/aprs2mysql/blob/master/schema.sql) into the Database.
