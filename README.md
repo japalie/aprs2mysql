@@ -29,17 +29,17 @@ You also have to copy the [DB schema](https://github.com/japalie/aprs2mysql/blob
 The program uses the default APRS-IS servers (rotate.aprs.net) on the default Port (10152).
 
 #### Command Line Options
-`--callsign` Set APRS-IS login callsign ((efault = nocall)
-`--dbhost` Set MySQL host (default = localhost)
-`--dbuser` Set MySQL user (default = root)
-`--dbpass` Set MySQL password (default = )
-`--db` Set MySQL database (default = aprs)
-`--host` Set APRS-IS host (default = rotate.aprs.net)
-`--port` Set APRS-IS port (default = 10152)
-`--filter` Set APRS-IS filter (default = "")
-`--interval` Set APRS-IS heartbeat interval in minutes (default = 15)
-`--logfile` set Logfile (default = /var/log/aprs2db.log)
-`--debug` Set logging level to DEBUG (default = False)
+* `--callsign` Set APRS-IS login callsign (default = nocall)
+* `--dbhost` Set MySQL host (default = localhost)
+* `--dbuser` Set MySQL user (default = root)
+* `--dbpass` Set MySQL password (default = )
+* `--db` Set MySQL database (default = aprs)
+* `--host` Set APRS-IS host (default = rotate.aprs.net)
+* `--port` Set APRS-IS port (default = 10152)
+* `--filter` Set APRS-IS filter (default = "")
+* `--interval` Set APRS-IS heartbeat interval in minutes (default = 15)
+* `--logfile` set Logfile (default = /var/log/aprs2db.log)
+* `--debug` Set logging level to DEBUG (default = False)
 
 #### Example
 
