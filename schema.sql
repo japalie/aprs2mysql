@@ -27,6 +27,8 @@ CREATE TABLE `packets` (
     
   `comment` varchar(1024) DEFAULT NULL,
   `text` varchar(1024) DEFAULT NULL,
+  `commentb64` varchar(1024) DEFAULT NULL,
+  `textb64` varchar(1024) DEFAULT NULL,
   
   `phg` varchar(32) DEFAULT NULL,
   `rng` varchar(32) DEFAULT NULL,
@@ -43,6 +45,7 @@ CREATE TABLE `packets` (
 
   `addresse` varchar(32) DEFAULT NULL,
   `message_text` varchar(1024) DEFAULT NULL,
+  `message_textb64` varchar(1024) DEFAULT NULL,
   `msgNo` varchar(32) DEFAULT NULL,
   `response` varchar(32) DEFAULT NULL,
  
@@ -66,6 +69,6 @@ CREATE TABLE `packets` (
   
   `alive` varchar(32) DEFAULT NULL,
   
-  `raw` LONGTEXT NOT NULL,
-  `rawb64` LONGTEXT NOT NULL
+  `raw` varchar(1024) NOT NULL,
+  `rawb64` varchar(1024) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
