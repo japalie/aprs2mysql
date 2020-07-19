@@ -142,10 +142,12 @@ def insert2db(packet):
 	# Extract comment
 	if "comment" in packet:
 		m_comment = packet.get("comment").encode('unicode-escape').decode('utf-8')
-	
+		m_commentb64 = str(base64.b64encode(packet.get("comment").encode("utf-8")), "utf-8")
+		
 	# Extract text
 	if "text" in packet:
 		m_text = packet.get("text").encode('unicode-escape').decode('utf-8')
+		m_textb64 = str(base64.b64encode(packet.get("text").encode("utf-8")), "utf-8")
 	
 	# Extract path
 	if "path" in packet:
@@ -204,6 +206,7 @@ def insert2db(packet):
 	# Extract message_text
 	if "message_text" in packet:
 		m_message_text = packet.get("message_text").encode('unicode-escape').decode('utf-8')
+		m_message_textb64 = str(base64.b64encode(packet.get("message_text").encode("utf-8")), "utf-8")
 	# Extract msgNo
 	if "msgNo" in packet:
 		m_msgNo = packet.get("msgNo")
