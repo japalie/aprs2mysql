@@ -76,7 +76,7 @@ CREATE TABLE `packets` (
 ALTER TABLE `packets`
   ADD KEY `ind_from` (`from`),
   ADD KEY `ind_ins_timestamp` (`ins_timestamp`),
-  ADD KEY `ind_via` (`via`(255)),
+  ADD KEY `ind_via` (`via`),
   ADD KEY `ind_latitude` (`latitude`),
   ADD KEY `ind_longitude` (`longitude`),
   ADD KEY `ind_format` (`format`),
