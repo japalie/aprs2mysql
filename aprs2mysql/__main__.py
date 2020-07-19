@@ -18,6 +18,7 @@ parser.add_argument('--dbhost', help='Set MySQL host', default="localhost")
 parser.add_argument('--dbuser', help='Set MySQL user', default="root")
 parser.add_argument('--dbpass', help='Set MySQL password', default="")
 parser.add_argument('--db', help='Set MySQL database', default="aprs")
+parser.add_argument('--dbtable', help='Set MySQL table', default="packets")
 parser.add_argument('--host', help='Set APRS-IS host', default="rotate.aprs.net")
 parser.add_argument('--port', help='Set APRS-IS port', default="10152")
 parser.add_argument('--filter', help='Set APRS-IS filter', default="")
@@ -78,7 +79,7 @@ def insert2db(packet):
 	"""
 	
 	# Define Variables for error prevention
-	m_from = m_to = m_symbol = m_symbol_table = m_format = m_via = m_messagecapable = m_latitude = m_longitude = m_gpsfixstatus = m_posAmbiguity = m_altitude = m_speed = m_course = m_comment = m_text = m_path = m_phg = m_rng = m_humidity = m_pressure = m_rain_1h = m_rain_24h = m_rain_since_midnight = m_temperature = m_wind_direction = m_wind_gust = m_wind_speed = m_addresse = m_message_text = m_msgNo = m_response = m_bid = m_identifier = m_timestamp = m_raw_timestamp = m_seq = m_bits = m_analog1 = m_analog2 = m_analog3 = m_analog4 = m_analog5 = m_mbits = m_mtype = m_daodatumbyte = m_alive = m_raw = m_rawb64 = ""
+	m_from = m_to = m_symbol = m_symbol_table = m_format = m_via = m_messagecapable = m_latitude = m_longitude = m_gpsfixstatus = m_posAmbiguity = m_altitude = m_speed = m_course = m_comment = m_commentb64 = m_text = m_textb64 = m_path = m_phg = m_rng = m_humidity = m_pressure = m_rain_1h = m_rain_24h = m_rain_since_midnight = m_temperature = m_wind_direction = m_wind_gust = m_wind_speed = m_addresse = m_message_text = m_message_textb64= m_msgNo = m_response = m_bid = m_identifier = m_timestamp = m_raw_timestamp = m_seq = m_bits = m_analog1 = m_analog2 = m_analog3 = m_analog4 = m_analog5 = m_mbits = m_mtype = m_daodatumbyte = m_alive = m_raw = m_rawb64 = ""
 	
 	# Extract from
 	if "from" in packet:
@@ -298,9 +299,9 @@ def insert2db(packet):
 		m_alive = str(packet.get("alive"))
 	
 	# Prepare SQL query to INSERT a record into the database.
-	sql = "INSERT INTO `packets` (`from`, `to`, `symbol_table`, `symbol`, `format`, `via`, `messagecapable`, `latitude`, `longitude`, `gpsfixstatus`, `posAmbiguity`, `altitude`, `speed`, `course`, `comment`, `text`, `path`, `phg`, `rng`, `humidity`, `pressure`, `rain_1h`, `rain_24h`, `rain_since_midnight`, `temperature`, `wind_direction`, `wind_gust`, `wind_speed`, `addresse`, `message_text`, `msgNo`, `response`, `bid`, `identifier`, `raw_timestamp`, `timestamp`, `seq`, `bits`, `analog1`, `analog2`, `analog3`, `analog4`, `analog5`, `mbits`, `mtype`, `daodatumbyte`, `alive`, `raw`, `rawb64`) VALUES \
-	('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}', '{18}', '{19}', '{20}', '{21}', '{22}', '{23}', '{24}', '{25}', '{26}', '{27}', '{28}', '{29}', '{30}', '{31}', '{32}', '{33}', '{34}', '{35}', '{36}', '{37}', '{38}', '{39}', '{40}', '{41}', '{42}', '{43}', '{44}', '{45}', '{46}', '{47}', '{48}') \
-	".format(m_from, m_to, m_symbol_table, m_symbol, m_format, m_via, m_messagecapable, m_latitude, m_longitude, m_gpsfixstatus, m_posAmbiguity, m_altitude, m_speed, m_course, pymysql.escape_string(m_comment), pymysql.escape_string(m_text), m_path, m_phg, m_rng, m_humidity, m_pressure, m_rain_1h, m_rain_24h, m_rain_since_midnight, m_temperature, m_wind_direction, m_wind_gust, m_wind_speed, m_addresse, pymysql.escape_string(m_message_text), m_msgNo, m_response, m_bid, m_identifier, m_raw_timestamp, m_timestamp, m_seq, m_bits, m_analog1, m_analog2, m_analog3, m_analog4, m_analog5, m_bits, m_mtype, m_daodatumbyte, m_alive, pymysql.escape_string(m_raw), m_rawb64)
+	sql = "INSERT INTO `{0}` (`from`, `to`, `symbol_table`, `symbol`, `format`, `via`, `messagecapable`, `latitude`, `longitude`, `gpsfixstatus`, `posAmbiguity`, `altitude`, `speed`, `course`, `comment`, `commentb64`, `text`, `textb64`, `path`, `phg`, `rng`, `humidity`, `pressure`, `rain_1h`, `rain_24h`, `rain_since_midnight`, `temperature`, `wind_direction`, `wind_gust`, `wind_speed`, `addresse`, `message_text`, `message_textb64`, `msgNo`, `response`, `bid`, `identifier`, `raw_timestamp`, `timestamp`, `seq`, `bits`, `analog1`, `analog2`, `analog3`, `analog4`, `analog5`, `mbits`, `mtype`, `daodatumbyte`, `alive`, `raw`, `rawb64`) VALUES \
+	('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}', '{18}', '{19}', '{20}', '{21}', '{22}', '{23}', '{24}', '{25}', '{26}', '{27}', '{28}', '{29}', '{30}', '{31}', '{32}', '{33}', '{34}', '{35}', '{36}', '{37}', '{38}', '{39}', '{40}', '{41}', '{42}', '{43}', '{44}', '{45}', '{46}', '{47}', '{48}', '{49}', '{50}', '{51}', '{52}') \
+	".format(args.dbtable, m_from, m_to, m_symbol_table, m_symbol, m_format, m_via, m_messagecapable, m_latitude, m_longitude, m_gpsfixstatus, m_posAmbiguity, m_altitude, m_speed, m_course, pymysql.escape_string(m_comment), m_commentb64, pymysql.escape_string(m_text), m_textb64, m_path, m_phg, m_rng, m_humidity, m_pressure, m_rain_1h, m_rain_24h, m_rain_since_midnight, m_temperature, m_wind_direction, m_wind_gust, m_wind_speed, m_addresse, pymysql.escape_string(m_message_text), m_message_textb64, m_msgNo, m_response, m_bid, m_identifier, m_raw_timestamp, m_timestamp, m_seq, m_bits, m_analog1, m_analog2, m_analog3, m_analog4, m_analog5, m_bits, m_mtype, m_daodatumbyte, m_alive, pymysql.escape_string(m_raw), m_rawb64)
 	
 	try:
 		# Execute the SQL command
@@ -409,7 +410,7 @@ def main():
 	logger = createLog(log, args.debug)
 
 	# Start login for APRS-IS
-	logger.info("Logging into APRS-IS as {0} on port {1}".format(args.callsign, args.port))
+	logger.info("Logging into APRS-IS as {0} on {1}:{2}".format(args.callsign, args.host, args.port))
 	if args.callsign == "nocall":
 		logger.warning("APRS-IS ignores the callsign \"nocall\"!")
 
