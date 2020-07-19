@@ -44,7 +44,7 @@ The program uses the default APRS-IS servers (rotate.aprs.net) on the default Po
 
 #### Example
 
-`aprs2mysql --callsign nocall --dbhost 127.0.0.1 --dbuser root --dbpass '********' --db aprs --host 127.0.0.1 --port 14580 --filter 'p/DL' > /dev/null 2>1 &`
+`aprs2mysql --callsign nocall --dbhost 127.0.0.1 --dbuser root --dbpass '********' --db aprs --dbtable packets --host 127.0.0.1 --port 14580 --filter 'p/DL' > /dev/null 2>1 &`
 
 ## Deployment
 This have been tested on a CentOS/RHEL7 environment.
