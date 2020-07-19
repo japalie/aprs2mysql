@@ -80,5 +80,6 @@ ALTER TABLE `packets`
   ADD KEY `ind_latitude` (`latitude`),
   ADD KEY `ind_longitude` (`longitude`),
   ADD KEY `ind_format` (`format`),
+  ADD KEY `ind_addresse` (`addresse`),
   ADD KEY `ind_to` (`to`);
 COMMIT;
