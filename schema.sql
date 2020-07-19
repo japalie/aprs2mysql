@@ -72,3 +72,13 @@ CREATE TABLE `packets` (
   `raw` varchar(1024) NOT NULL,
   `rawb64` varchar(1024) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+ALTER TABLE `packets`
+  ADD KEY `ind_from` (`from`),
+  ADD KEY `ind_ins_timestamp` (`ins_timestamp`),
+  ADD KEY `ind_via` (`via`(255)),
+  ADD KEY `ind_latitude` (`latitude`),
+  ADD KEY `ind_longitude` (`longitude`),
+  ADD KEY `ind_format` (`format`),
+  ADD KEY `ind_to` (`to`);
+COMMIT;
