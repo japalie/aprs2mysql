@@ -34,6 +34,7 @@ The program uses the default APRS-IS servers (rotate.aprs.net) on the default Po
 * `--dbuser` Set MySQL user (default = root)
 * `--dbpass` Set MySQL password (default = )
 * `--db` Set MySQL database (default = aprs)
+* `--dbtable` Set MySQL table (default = packets)
 * `--host` Set APRS-IS host (default = rotate.aprs.net)
 * `--port` Set APRS-IS port (default = 10152)
 * `--filter` Set APRS-IS filter (default = "")
