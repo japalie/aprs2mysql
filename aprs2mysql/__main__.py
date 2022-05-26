@@ -372,7 +372,7 @@ def heartbeat(conn, callsign, interval):
                 timestamp = int(time.time())
 
                 # Create APRS status message
-                status = "{0}>APRS,TCPIP*:>aprs2influxdb heartbeat {1}"
+                status = "{0}>APRS,TCPIP*:>aprs2mysql heartbeat {1}"
                 conn.sendall(status.format(callsign, timestamp))
                 logger.debug("Sent heartbeat")
 
@@ -406,11 +406,11 @@ def main():
                 logger.error("Error: unable to fetch data", exc_info=True)
 
 
-        # Log to sys.prefix + aprs2influxdb.log
+        # Log to sys.prefix + aprs2mysql.log
         if args.logfile != "":
                 log = args.logfile
         else:
-                log = os.path.join(sys.prefix, "aprs2db.log")
+                log = os.path.join(sys.prefix, "aprs2mysql.log")
         logger = createLog(log, args.debug)
 
         # Start login for APRS-IS
@@ -425,7 +425,7 @@ def main():
                 host=args.host,
                 port=args.port)
 
-        # Set aprslib logger equal to aprs2influxdb logger
+        # Set aprslib logger equal to aprs2mysql logger
         AIS.logger = logger
 
         # Connect to APRS-IS servers
