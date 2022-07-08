@@ -18,6 +18,10 @@ For Using the the tool and connection to the APRS-IS service you need a valid am
 ### Prerequisites
 You have to install and configure an [MySQL](https://www.mysql.com/) or [MariDB](https://mariadb.org/) database.
 
+WARNING: this will drop an existing database by name aprs and all data will be lost
+
+`mysql -u root -p  < schema.sql`
+
 ### Installing
 Navigate to the source directory and run:
 
