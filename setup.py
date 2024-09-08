@@ -3,8 +3,8 @@ from distutils.core import setup
 setup(
     name='aprs2mysql',
     version='0.1.1',
-    author='Patrick Jakob',
-    author_email='japa@japa.li',
+    author='Patrick',
+    author_email='github@japa.li',
     packages=['aprs2mysql'],
     url='https://github.com/japalie/aprs2mysql',
     license='GPLv3',
